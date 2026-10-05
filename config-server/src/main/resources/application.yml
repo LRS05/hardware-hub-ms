@@ -9,5 +9,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/TU_USUARIO/microservices-config.git
+          uri: https://github.com/LRS05/hardware-hub-ms.git
           default-label: main
+          search-paths: config-data
