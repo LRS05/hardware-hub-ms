@@ -1,6 +1,5 @@
 package com.hardwarehub.order_service.entity;
 
-import com.hardwarehub.api.product.entity.ProductEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +18,9 @@ public class OrderItemEntity
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "product_id", unique = true, nullable = false)
+    private long productId;
+
     @Column(name = "price", precision = 10, scale = 2, nullable = false)
     private BigDecimal price;
 
@@ -28,8 +30,4 @@ public class OrderItemEntity
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false)
     private OrderEntity order;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private ProductEntity product;
 }

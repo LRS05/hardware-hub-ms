@@ -21,6 +21,9 @@ public class OrderEntity
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "user_id", unique = true, nullable = false)
+    private long userId;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private OrderStatus status;
@@ -33,10 +36,6 @@ public class OrderEntity
 
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id")
-//    private UserEntity user;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<OrderItemEntity> orderItems;
